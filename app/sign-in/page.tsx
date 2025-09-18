@@ -1,6 +1,3 @@
-'use client';
-import { useAuthActions } from '@convex-dev/auth/react';
-
 import { Button } from '@/components/ui/button';
 
 export default function SignInPage() {
@@ -12,8 +9,6 @@ export default function SignInPage() {
 }
 
 const SignInCard = () => {
-  const { signIn } = useAuthActions();
-
   return (
     <div className="w-full max-w-sm">
       <div className="flex flex-col items-center gap-2 mb-6">
@@ -21,16 +16,16 @@ const SignInCard = () => {
           Not Fin Advice
         </h1>
         <p className="text-muted-foreground text-sm text-center max-w-xs">
-          Sign in to access your personalized financial insights.
+          Sign up to access your personalized financial insights.
         </p>
       </div>
       <div className="p-0 sm:p-2">
         <Button
-          aria-label="Sign in with Google"
+          aria-label="Sign up with Google"
           variant="outline"
           type="button"
           className="w-full h-10"
-          onClick={() => void signIn('google')}
+          onClick={() => alert('Sign-up functionality coming soon!')}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +49,7 @@ const SignInCard = () => {
               d="M9 3.579c1.321 0 2.515.454 3.452 1.345l2.589-2.589C13.464.866 11.427 0 9 0 5.478 0 2.437 2.017.957 4.962l2.998 2.332C4.665 5.164 6.652 3.579 9 3.579z"
             />
           </svg>
-          Sign in with Google
+          Sign up with Google
         </Button>
 
         <p className="text-muted-foreground text-center text-xs text-balance mt-4 *:[a]:underline *:[a]:underline-offset-4 *:[a]:hover:text-primary">
