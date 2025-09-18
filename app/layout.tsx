@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { ConvexClientProvider } from './providers/convex-client-provider';
-import { ThemeProvider } from './providers/theme-provider';
+import { ConvexClientProvider } from '../components/providers/convex-client-provider';
+import { ConvexAuthNextjsServerProvider } from '@convex-dev/auth/nextjs/server';
+import { ThemeProvider } from '../components/providers/theme-provider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -25,21 +26,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ConvexClientProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
-        </ConvexClientProvider>
-      </body>
-    </html>
+    <ConvexAuthNextjsServerProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <ConvexClientProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+            </ThemeProvider>
+          </ConvexClientProvider>
+        </body>
+      </html>
+    </ConvexAuthNextjsServerProvider>
   );
 }
